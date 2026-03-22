@@ -4,10 +4,8 @@ import UserLayout from "@/Pages/Layout/UserLayout.vue";
 </script>
 
 <template>
-    <UserLayout>
-        <div>
-            index.vue
-        </div>
+    <UserLayout :status="true">
+       index
     </UserLayout>
 </template>
 

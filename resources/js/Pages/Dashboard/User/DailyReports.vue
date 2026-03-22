@@ -1,13 +1,16 @@
 <script setup>
-
 import UserLayout from "@/Pages/Layout/UserLayout.vue";
+import TablePagination from "@/Pages/components/TablePagination.vue";
+
+const props = defineProps({
+    reviews : { type: Object, required: true }
+})
+
 </script>
 
 <template>
-    <UserLayout>
-        <div class="container">
-            DailyReports.vue
-        </div>
+    <UserLayout :status="false">
+        <TablePagination :reviews />
     </UserLayout>
 </template>
 

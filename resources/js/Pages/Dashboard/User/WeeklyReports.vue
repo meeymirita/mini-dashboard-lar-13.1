@@ -4,7 +4,7 @@ import UserLayout from "@/Pages/Layout/UserLayout.vue";
 </script>
 
 <template>
-    <UserLayout>
+    <UserLayout :status="true">
         <div class="container">
             WeeklyReports.vue
         </div>
