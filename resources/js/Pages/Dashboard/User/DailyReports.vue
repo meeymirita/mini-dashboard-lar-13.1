@@ -1,6 +1,6 @@
 <script setup>
 import UserLayout from "@/Pages/Layout/UserLayout.vue";
-import TablePagination from "@/Pages/components/TablePagination.vue";
+import Table from "@/Pages/components/Table.vue";
 
 const props = defineProps({
     reviews : { type: Object, required: true }
@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
     <UserLayout :status="false">
-        <TablePagination :reviews />
+        <Table :reviews />
     </UserLayout>
 </template>
 

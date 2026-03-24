@@ -33,6 +33,8 @@ Route::controller(UserDashboardController::class)
             ->name('user.weekly-reports');
         Route::get('/profile', 'profile')
             ->name('user.profile');
+        Route::post('/store', 'store')
+            ->name('user.store');
         Route::post('/logout', 'logout')->name('user.logout');
     });
 
