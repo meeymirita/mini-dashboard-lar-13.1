@@ -11,8 +11,7 @@ const props = defineProps({
 })
 </script>
 <template>
-    <div class="bg-white/80 backdrop-blur-xl rounded-xl shadow-md border border-gray-200 overflow-hidden max-w-[1600px]" >
-        <!-- HEADER -->
+    <div class="overflow-x-auto overflow-y-visible">
         <TableHeader/>
         <!-- TABLE -->
         <TableTemplate :reviews="reviews"/>

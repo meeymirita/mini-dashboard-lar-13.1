@@ -33,7 +33,7 @@ class UserDashboardController extends Controller
     public function dailyReport()
     {
         return Inertia::render('Dashboard/User/DailyReports', [
-            'reviews' => Auth::user()->reviews()->latest()->paginate(10),
+            'reviews' => Auth::user()->reviews()->latest()->paginate(19),
         ]);
     }
 

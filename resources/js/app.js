@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { ZiggyVue } from 'ziggy-js'
+import 'ckeditor5/ckeditor5.css';
 import '../css/app.css';
 createInertiaApp({
     resolve: name => {

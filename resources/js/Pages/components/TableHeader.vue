@@ -2,6 +2,15 @@
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 
+import { Ckeditor } from '@ckeditor/ckeditor5-vue';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+const editor = ClassicEditor;
+
+const config = {
+    licenseKey: 'GPL'
+};
+
 const showCreateModal = ref(false);
 
 const form = useForm({
@@ -71,88 +80,85 @@ function submitForm() {
              bg-white rounded-2xl shadow-2xl
              p-8 z-10 overflow-y-auto"
         >
-
             <h2 class="text-2xl font-bold text-red-600 mb-6">
                 Daily Report
             </h2>
 
             <form @submit.prevent="submitForm" class="space-y-4">
-
-                <!-- HEADER -->
-                <div class="grid grid-cols-12 gap-3 text-xs font-semibold text-gray-500 px-2">
-                    <div class="col-span-3">Title</div>
-                    <div class="col-span-6">Description</div>
-                    <div class="col-span-2">Time</div>
-                    <div class="col-span-1"></div>
-                </div>
-
                 <!-- ROWS -->
                 <div
                     v-for="(task,index) in form.tasks"
                     :key="index"
-                    class="grid grid-cols-12 gap-4 items-start"
+                    class="bg-gray-50 border rounded-xl p-5 space-y-4 shadow-sm"
                 >
+                    <!-- TOP LINE -->
+                    <div class="flex gap-4 items-start">
+                        <!-- TITLE -->
+                        <div class="flex-1">
+                            <label class="text-xs text-gray-500 mb-1 block">
+                                Заголовок
+                            </label>
 
-                    <!-- TITLE -->
-                    <div class="col-span-3 flex flex-col">
-                        <input
-                            v-model="task.title"
-                            type="text"
-                            placeholder="Task"
-                            class="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500"
-                        />
-                        <p
-                            v-if="form.errors[`tasks.${index}.title`]"
-                            class="text-red-500 text-xs mt-1"
-                        >
-                            {{ form.errors[`tasks.${index}.title`] }}
-                        </p>
-                    </div>
-
-                    <!-- DESCRIPTION -->
-                    <div class="col-span-6 flex flex-col">
-                        <input
-                            v-model="task.description"
-                            type="text"
-                            placeholder="Description"
-                            class="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500"
-                        />
-                        <p
-                            v-if="form.errors[`tasks.${index}.description`]"
-                            class="text-red-500 text-xs mt-1"
-                        >
-                            {{ form.errors[`tasks.${index}.description`] }}
-                        </p>
-                    </div>
-
-                    <!-- TIME -->
-                    <div class="col-span-2 flex flex-col">
-                        <input
-                            v-model="task.time"
-                            type="time"
-                            class="px-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500"
-                        />
-                        <p
-                            v-if="form.errors[`tasks.${index}.time`]"
-                            class="text-red-500 text-xs mt-1"
-                        >
-                            {{ form.errors[`tasks.${index}.time`] }}
-                        </p>
-                    </div>
-
-                    <!-- DELETE -->
-                    <div class="col-span-1 flex justify-center pt-2">
+                            <input
+                                v-model="task.title"
+                                type="text"
+                                placeholder="Task title"
+                                class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500"
+                            />
+                            <p
+                                v-if="form.errors['tasks.' + index + '.title']"
+                                class="text-red-500 text-xs mt-1"
+                            >
+                                {{ form.errors['tasks.' + index + '.title'] }}
+                            </p>
+                        </div>
+                        <!-- TIME -->
+                        <div class="w-40">
+                            <label class="text-xs text-gray-500 mb-1 block">
+                                Время
+                            </label>
+                            <input
+                                v-model="task.time"
+                                type="time"
+                                class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500"
+                            />
+                            <p
+                                v-if="form.errors['tasks.' + index + '.time']"
+                                class="text-red-500 text-xs mt-1"
+                            >
+                                {{ form.errors['tasks.' + index + '.time'] }}
+                            </p>
+                        </div>
+                        <!-- DELETE -->
                         <button
                             type="button"
                             @click="removeRow(index)"
-                            class="text-red-500 hover:text-red-700 text-lg"
+                            class="mt-6 text-red-500 hover:text-red-700 text-lg"
                         >
                             ✕
                         </button>
                     </div>
+                    <!-- DESCRIPTION -->
+                    <div>
+                        <label class="text-xs text-gray-500 mb-2 block">
+                            Описание
+                        </label>
 
+                        <div class="ckeditor-wrapper">
+                            <Ckeditor
+                                :editor="editor"
+                                v-model="task.description"
+                                :config="config"
+                            />
+                        </div>
+                        <p
+                            v-if="form.errors['tasks.' + index + '.description']"
+                            class="text-red-500 text-xs mt-1"
+                        >
+                            {{ form.errors['tasks.' + index + '.description'] }}
+                        </p>
+                    </div>
                 </div>
-
                 <!-- ADD ROW -->
                 <button
                     type="button"
@@ -161,7 +167,6 @@ function submitForm() {
                 >
                     + Add task
                 </button>
-
                 <!-- ACTIONS -->
                 <div class="flex gap-3 pt-4">
                     <button
@@ -179,8 +184,9 @@ function submitForm() {
                     >
                         {{ form.processing ? 'Saving...' : 'Save report' }}
                     </button>
-                </div>
 
+
+                </div>
             </form>
         </div>
     </div>
