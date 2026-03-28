@@ -22,9 +22,10 @@ const submit = () => {
     <!-- BACKGROUND -->
     <div
         class="min-h-screen flex items-center justify-center bg-cover bg-center"
-        style="background-image: url('https://avatars.mds.yandex.net/i?id=5718ae59c3611e8e823519eee210c1b0_l-5372116-images-thumbs&ref=rim&n=13&w=1920&h=1080');"
+        style="background-image: url('https://img.freepik.com/premium-photo/abstract-background-design-hd-light-turkish-red-color_851755-114482.jpg?semt=ais_hybrid&w=740');"
     >
-        <!--        style="background-image: url('https://7themes.su/_ph/57/338389486.png');"-->
+<!--        style="background-image: url('https://avatars.mds.yandex.net/i?id=5718ae59c3611e8e823519eee210c1b0_l-5372116-images-thumbs&ref=rim&n=13&w=1920&h=1080');"-->
+        <!--        style="background-image: url('https://img.freepik.com/premium-photo/abstract-background-design-hd-light-turkish-red-color_851755-114482.jpg?semt=ais_hybrid&w=740');"-->
         <!-- overlay -->
         <div class="absolute inset-0 bg-red-900/60"></div>
 

@@ -4,7 +4,7 @@ import UserLayout from "@/Pages/Layout/UserLayout.vue";
 </script>
 
 <template>
-    <UserLayout :status="true">
+    <UserLayout :status="false">
        index
     </UserLayout>
 </template>

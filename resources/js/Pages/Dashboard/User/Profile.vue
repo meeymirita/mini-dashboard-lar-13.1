@@ -6,7 +6,7 @@ const { user } = useAuth()
 </script>
 
 <template>
-    <UserLayout :status="true">
+    <UserLayout :status="false">
         <div class="flex justify-start items-start min-h-screen p-6">
             <div
                 class="w-full max-w-5xl
