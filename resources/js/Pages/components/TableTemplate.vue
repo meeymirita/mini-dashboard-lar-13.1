@@ -8,6 +8,7 @@ const props = defineProps({
         required: true
     }
 })
+console.log(props.reviews)
 const selectedTask = ref(null)
 const showTask = ref(false)
 const openTask = (task) => {
@@ -40,7 +41,7 @@ const formatDescription = (description) => {
             <!-- BODY -->
             <tbody class="divide-y divide-gray-200">
             <tr
-                v-for="review in reviews.data"
+                v-for="review in reviews.data || reviews"
                 :key="review.id"
                 class="hover:bg-red-50/40 transition"
             >
