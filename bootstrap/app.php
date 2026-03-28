@@ -26,25 +26,25 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (Throwable $e, Request $request) {
-            // 404
-            if ($e instanceof NotFoundHttpException) {
-                return Inertia::render('Dashboard/Errors/NotFound')
-                    ->toResponse($request)
-                    ->setStatusCode(404);
-            }
-            // 405
-            if ($e instanceof MethodNotAllowedHttpException) {
-                return Inertia::render('Dashboard/Errors/NotFound')
-                    ->toResponse($request)
-                    ->setStatusCode(404);
-            }
-            // 403
-            if ($e instanceof HttpException && $e->getStatusCode() === 403) {
-                return Inertia::render('Dashboard/Errors/Forbidden')
-                    ->toResponse($request)
-                    ->setStatusCode(403);
-            }
-            return null;
-        });
+//        $exceptions->render(function (Throwable $e, Request $request) {
+//            // 404
+//            if ($e instanceof NotFoundHttpException) {
+//                return Inertia::render('Dashboard/Errors/NotFound')
+//                    ->toResponse($request)
+//                    ->setStatusCode(404);
+//            }
+//            // 405
+//            if ($e instanceof MethodNotAllowedHttpException) {
+//                return Inertia::render('Dashboard/Errors/NotFound')
+//                    ->toResponse($request)
+//                    ->setStatusCode(404);
+//            }
+//            // 403
+//            if ($e instanceof HttpException && $e->getStatusCode() === 403) {
+//                return Inertia::render('Dashboard/Errors/Forbidden')
+//                    ->toResponse($request)
+//                    ->setStatusCode(403);
+//            }
+//            return null;
+//        });
     })->create();
